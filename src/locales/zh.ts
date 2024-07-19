@@ -270,7 +270,7 @@ export default {
         },
         icon: {
           label: '图标链接',
-          placeholder: '可点击左侧图标, 从图标库复制. 填入图标链接，不要使用 jpg',
+          placeholder: '可点击左侧或顶部图标, 从图标库填入图标链接，不要使用 jpg',
         },
         ignoreFailedRemoteSub: {
           label: '忽略失败的远程订阅'
@@ -370,7 +370,7 @@ export default {
           label: '域名解析',
           des: '提供商(可由节点字段 "_no-resolve" 控制)',
           options: ['Google', 'IP-API', 'Cloudflare', 'Ali', 'Tencent', '自定义'],
-          types: ['IPv4', 'IPv6', 'IP4P'],
+          types: ['IPv4', 'IPv6'],
           filters: ['不过滤', '移除失败', '只保留 IP', '只保留 IPv4', '只保留 IPv6'],
           cache: ['启用', '禁用'],
           tipsTitle: '域名解析操作提示',
@@ -661,6 +661,8 @@ export default {
     emptyCollectionDesc: '请手动刷新或选择其他图标仓库',
     refreshBtn: '手动刷新',
     selectCollectionBtn: '切换图标仓库',
+    more: '更多',
+    useCustomIconCollection: '使用自定义仓库',
     collectionPicker: {
       title: '选择一个图标仓库',
       cancel: '取消',

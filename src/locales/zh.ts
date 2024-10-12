@@ -98,6 +98,9 @@ export default {
     ignoreFailedRemoteFile: {
       label: '忽略失败的远程文件'
     },
+    download: {
+      label: '启用下载(文件名为显示名称)'
+    },
   },
   // 订阅管理页
   subPage: {
@@ -124,7 +127,8 @@ export default {
     },
     collectionItem: {
       noSub: '没有包含子订阅',
-      contain: '包含的订阅',
+      contain: '手动选择的订阅',
+      containTag: '关联的订阅标签',
     },
     subItem: {
       local: '本地订阅',
@@ -237,6 +241,10 @@ export default {
           label: '标签',
           placeholder: '标签(用 , 分隔) 将用于分组',
         },
+        subscriptionTags: {
+          label: '关联订阅标签',
+          placeholder: '使用标签关联单条订阅(用 , 分隔)',
+        },
         source: {
           label: '来源',
           remote: '远程订阅',
@@ -258,7 +266,7 @@ export default {
           isIllegal: '订阅链接格式非法',
         },
         subscriptions: {
-          label: '包含的订阅',
+          label: '手动选择的订阅',
         },
         content: {
           label: '内容',
@@ -285,7 +293,7 @@ export default {
         },
         proxy: {
           label: '代理/策略',
-          placeholder: '通过代理/节点/策略获取订阅',
+          placeholder: '通过代理/节点/策略获取远程资源，不填使用默认',
         },
       },
       commonOptions: {
@@ -472,11 +480,13 @@ export default {
       githubUser: '请输入 GitHub 用户名',
       gistToken: '请输入 GitHub 令牌',
       defaultUserAgent: '请输入默认 User-Agent',
+      defaultProxy: '请输入默认代理/策略',
       defaultTimeout: '请输入默认超时(单位: 毫秒)',
       cacheThreshold: '请输入缓存阈值(单位: KB)',
       noGithubUser: '未配置 GitHub 用户名',
       noGistToken: '未配置 GitHub 令牌',
       noDefaultUserAgent: '未配置默认 User-Agent',
+      noDefaultProxy: '未配置默认代理/策略',
       noDefaultTimeout: '未配置默认超时',
       noCacheThreshold: '未配置缓存阈值',
     },

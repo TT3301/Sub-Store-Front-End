@@ -98,6 +98,9 @@ export default {
     ignoreFailedRemoteFile: {
       label: 'Ignore failed remote file(s)'
     },
+    download: {
+      label: 'Enable download (filename: display name)',
+    },
   },
   // subscription management page
   subPage: {
@@ -124,8 +127,9 @@ export default {
       officialChannel: 'Official channel:',
     },
     collectionItem: {
-      noSub: 'Not contains subscription',
-      contain: 'Contains subs',
+      noSub: 'No subscription included',
+      contain: 'Included subs',
+      containTag: 'Included subscription tags',
     },
     subItem: {
       local: 'Local subscription',
@@ -236,6 +240,10 @@ export default {
         tag: {
           label: 'Tag(s)',
           placeholder: 'The tag(s) (separated by comma) will be used for grouping.',
+        },
+        subscriptionTags: {
+          label: 'Subscription Tag(s)',
+          placeholder: 'Include all subscriptions that contain one of these tag(s) (separated by comma)',
         },
         source: {
           label: 'Source',
@@ -470,11 +478,13 @@ export default {
       githubUser: 'Please input GitHub username',
       gistToken: 'Please input Gist Token',
       defaultUserAgent: 'Please input Default User-Agent',
+      defaultProxy: 'Please input Default Proxy/Policy',
       defaultTimeout: 'Please input Default Timeout (in milliseconds)',
       cacheThreshold: 'Please input Cache Threshold (in KB)',
       noGithubUser: 'Not set GitHub username',
       noGistToken: 'Not set Gist Token',
       noDefaultUserAgent: 'Not set default user-agent',
+      noDefaultProxy: 'Not set default proxy/policy',
       noDefaultTimeout: 'Not set default timeout',
       noCacheThreshold: 'Not set cache threshold',
     },

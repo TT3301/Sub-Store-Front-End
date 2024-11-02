@@ -18,6 +18,34 @@ export default {
       failed: '数据刷新失败\n',
       loading: '刷新数据中...',
     },
+    share: {
+      title: '分享',
+      expiresValue: '有效期时长',
+      expiresValueEmpty: '有效期时长不可为空',
+      expiresValuePlaceholder: '请输入有效期时长',
+      expiresValueRegex: '请输入0.01-99999.99范围内的数字',
+      expiresUnit: '有效期单位',
+      token: '自定义Token',
+      tokenPlaceholder: '默认后端随机Token',
+      remark: '备注',
+      remarkPlaceholder: '请输入备注',
+      shareUrl: '分享链接',
+      shareUrlPlaceholder: '请点击按钮创建分享链接',
+      tipsTitle: '温馨提示',
+      userKnow: '我知道了',
+      confirm: '确定',
+      cancel: '返回',
+      createShare: '创建分享',
+      copyShare: '复制链接',
+      copyShareSuccessTips: '复制分享链接成功！',
+      createShareSuccessTips: '创建分享成功！',
+      unit: {
+        day: '天',
+        month: '月',
+        season: '季',
+        year: '年',
+      }
+    }
   },
   // 顶部标题栏
   navBar: {
@@ -266,11 +294,12 @@ export default {
           label: '链接',
           placeholder: '支持多行和参数, 请点击左侧的使用说明查看用法',
           tips: {
+            importFromFile: '从文件导入',
             fullScreenEdit: '全屏编辑',
             fullScreenEditCancel: '取消全屏',
             label: '使用说明',
             title: '订阅链接',
-            content: '支持换行输入多个订阅\n\n支持以下参数\n\ncacheKey: 设置乐观缓存的名称 开启后也可自行在持久化缓存中管理(适合经常拉取失败的订阅)\nvalidCheck: 过期或无剩余流量时报错\nflowUserAgent: 查询流量时使用的 User-Agent\nflowUrl: 自定义查询流量的 URL(将使用响应体的内容)\nnoFlow: 不查询流量\nhideExpire: 隐藏到期\nshowRemaining: 显示剩余流量而不是已用流量\nnoCache: 不使用缓存\nresetDay: 每月流量重置日\nstartDate: 订阅开始日期\ncycleDays: 订阅重置周期(单位: 天)\n\n例: http://a.com?token=1#cycleDays=31&startDate=2024-06-04\n或 http://a.com?token=1#resetDay=15',
+            content: '支持换行输入多个订阅\n\n支持以下参数\n\ninsecure: 不验证服务器证书\ncacheKey: 设置乐观缓存的名称 开启后也可自行在持久化缓存中管理(适合经常拉取失败的订阅)\nvalidCheck: 过期或无剩余流量时报错\nflowUserAgent: 查询流量时使用的 User-Agent\nflowUrl: 自定义查询流量的 URL(将使用响应体的内容)\nnoFlow: 不查询流量\nhideExpire: 隐藏到期\nshowRemaining: 显示剩余流量而不是已用流量\nnoCache: 不使用缓存\nresetDay: 每月流量重置日\nstartDate: 订阅开始日期\ncycleDays: 订阅重置周期(单位: 天)\n\n例: http://a.com?token=1#cycleDays=31&startDate=2024-06-04\n或 http://a.com?token=1#resetDay=15',
           },
           isEmpty: '订阅链接不能为空',
           isIllegal: '订阅链接格式非法',

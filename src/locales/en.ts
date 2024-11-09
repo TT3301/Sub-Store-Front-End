@@ -18,35 +18,6 @@ export default {
       failed: "Refresh Failed\n",
       loading: "Refreshing Data...",
     },
-    share: {
-      title: "Share",
-      expiresValue: "Valid for",
-      expiresValueEmpty: "Valid for cannot be empty",
-      expiresValuePlaceholder: "Enter valid for",
-      expiresValueRegex:
-        "Please enter a number within the range of 0.01 to 99999.99.",
-      expiresUnit: "Validity unit",
-      token: "Custom Token",
-      tokenPlaceholder: "default random Token",
-      remark: "Remark",
-      remarkPlaceholder: "Enter remark",
-      shareUrl: "Share Link",
-      shareUrlPlaceholder: "Please click the button to create a sharing link",
-      tipsTitle: "Share Link Tips",
-      userKnow: "OK",
-      confirm: "Confirm",
-      cancel: "Cancel",
-      createShare: "Create",
-      copyShare: "Copy",
-      copyShareSuccessTips: "Copy share link success!",
-      createShareSuccessTips: "Create share link success!",
-      unit: {
-        day: "Day",
-        month: "Month",
-        season: "Season",
-        year: "Year",
-      },
-    },
   },
   // Title Bar
   navBar: {
@@ -63,6 +34,7 @@ export default {
       editScript: "Script Edit",
       subEditor: "Subscription Editor",
       fileEditor: "File Editor",
+      shareManage: "Share Manage",
       iconCollection: "Icon Collection",
       themeSetting: "Theme Setting",
       moreSetting: "More Setting",
@@ -692,10 +664,10 @@ export default {
         placeholder: "Please select a source",
       },
       includeUnsupportedProxy: {
-        label: "Includes protocols not supported by the official/store version",
+        label: "Includes protocols not supported by the official/store/unrenewed subscription version",
         tips: {
           title:
-            "Includes protocols not supported by the official/store version",
+            "Includes protocols not supported by the official/store/unrenewed subscription version",
           content: "sing-box: +ShadowsocksR\nQuantumult X: +VLESS",
         },
       },
@@ -731,6 +703,74 @@ export default {
       content:
         "⚠️ This feature will only add files to the sync configuration that are not already in the sync configuration.\nYou need to manually set the source.",
       confirm: "Restore From Gist",
+    },
+  },
+  sharePage: {
+    title: "Share",
+    noOriginalTips: "Failed to jump, check if the source data has been deleted.",
+    leftTime: "Remaining time",
+    expired: "Expired",
+    createShare: {
+      expiresValue: {
+        label: "Valid for",
+        placeholder: "Enter valid for",
+        regex: "Please enter a number within the range of 0.01 to 99999.99",
+        empty: "Valid for cannot be empty",
+      },
+      expiresUnit: {
+        label: "Validity unit",
+      },
+      token: {
+        label: "Custom Token",
+        placeholder: "default random Token"
+      },
+      remark: {
+        label: "Remarks",
+        placeholder: "The remarks",
+      },
+      displayName: {
+        label: "显示名称",
+        placeholder: "输入展示的名称",
+      },
+      shareUrl: {
+        label: "Share Link",
+        placeholder: "Share Link",
+      },
+      unit: {
+        day: "Day",
+        month: "Month",
+        season: "Season",
+        year: "Year",
+      },
+      copyBtn: "Copy Link",
+      updateBtn: "Update",
+      createBtn: "Create",
+      succeedNotify: "Create share successfully!",
+    },
+    copyShare: {
+      succeedNotify: "Copy share link successfully!",
+    },
+    emptyShare: {
+      title: "No share yet",
+      desc: "Create and share, then start using.",
+      emptyTips: "Please go to the Subs, Files Management page to add the share",
+      btn: "Create Now",
+    },
+    updateShare: {
+      failNotify: "Update share failed",
+      title: "Update Share",
+      tips: "After updating the share, the original share link will not work, should I continue?",
+      confirm: "Confirm",
+      cancel: "Cancel",
+    },
+    deleteShare: {
+      title: "Delete Share",
+      desc: "Are you sure you want to delete {displayName}? Deletion is not recoverable!",
+      succeedNotify: "Successfully deleted!",
+      btn: {
+        confirm: "Confirm",
+        cancel: "Cancel",
+      },
     },
   },
   // 图标仓库页
@@ -799,6 +839,7 @@ export default {
       background: "Show As Background",
     },
     moreSettingTitle: "More Setting",
+    shareManageTitle: 'Share Management',
     clearData: {
       label: "Clear Backend Data",
       title: "Clear Backend Data",
@@ -822,8 +863,10 @@ export default {
     islr: "Card right swipe to call out",
     isIC: "Use original color for custom icons",
     isDefaultIcon: "Restore default icon",
+    isShowIcon: 'Show icon',
     isEditorCommon: "Show editor common settings",
     isSimpleReicon: "Show items refresh button",
+    isSimpleShowRemarks: "Simple Mode Show items remarks",
     showFloatingRefreshButton: "Show floating refresh button",
     tabBar: 'Hide "Sync" Page',
     tabBar2: 'Hide "File" Page',

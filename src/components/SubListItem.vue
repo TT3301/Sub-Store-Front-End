@@ -27,27 +27,30 @@
         :style="{ 'margin-top': appearanceSetting.isSimpleMode ? '5px' : '0' }"
         @click.stop="compareSub"
       >
-        <div v-if="appearanceSetting.isIconColor">
-          <nut-avatar
-            v-if="props[props.type].icon"
-            :size="appearanceSetting.isSimpleMode ? '36' : '48'"
-            :url="props[props.type].icon"
-            bg-color=""
-          />
-          <nut-avatar
-            v-else
-            :size="appearanceSetting.isSimpleMode ? '36' : '48'"
-            :url="icon"
-            bg-color=""
-          />
-        </div>
-        <div v-else>
-          <nut-avatar
-            class="sub-item-customer-icon"
-            :size="appearanceSetting.isSimpleMode ? '36' : '48'"
-            :url="props[props.type].icon || icon"
-            bg-color=""
-          />
+        <!-- icon visible -->
+        <div v-if="appearanceSetting.isShowIcon">
+          <div v-if="appearanceSetting.isIconColor">
+            <nut-avatar
+              v-if="props[props.type].icon"
+              :size="appearanceSetting.isSimpleMode ? '36' : '48'"
+              :url="props[props.type].icon"
+              bg-color=""
+            />
+            <nut-avatar
+              v-else
+              :size="appearanceSetting.isSimpleMode ? '36' : '48'"
+              :url="icon"
+              bg-color=""
+            />
+          </div>
+          <div v-else>
+            <nut-avatar
+              class="sub-item-customer-icon"
+              :size="appearanceSetting.isSimpleMode ? '36' : '48'"
+              :url="props[props.type].icon || icon"
+              bg-color=""
+            />
+          </div>
         </div>
       </div>
       <div class="sub-item-content">
@@ -74,6 +77,15 @@
             style="position: relative"
             :style="{ top: appearanceSetting.isSimpleMode ? '8px' : '0' }"
           >
+            <!-- 预览 -->
+            <button
+              v-if="!appearanceSetting.isShowIcon"
+              class="compare-sub-link"
+              @click.stop="compareSub"
+            >
+              <font-awesome-icon icon="fa-solid fa-eye" />
+            </button>
+            <!-- 分享 -->
             <button
               v-if="shareBtnVisible"
               class="share-sub-link"
@@ -84,6 +96,7 @@
             <button class="copy-sub-link" @click.stop="onClickCopyLink">
               <font-awesome-icon icon="fa-solid fa-clone" />
             </button>
+            <!-- 刷新 -->
             <button
               v-if="
                 props.type === 'sub' &&
@@ -95,7 +108,6 @@
             >
               <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" />
             </button>
-
             <!-- 编辑 -->
             <button
               v-if="!appearanceSetting.isSimpleMode"
@@ -158,6 +170,12 @@
           </p>
           <p v-else-if="type === 'collection'" class="sub-item-detail-isSimple">
             {{ collectionDetail }}
+          </p>
+          <p
+            v-if="remark && appearanceSetting.isSimpleShowRemark"
+            class="sub-item-remark"
+          >
+            <span>{{ remarkText }}</span>
           </p>
         </template>
       </div>
@@ -751,6 +769,7 @@ const onClickRefresh = async () => {
       .tag {
         margin: 0 2px;
       }
+      .compare-sub-link,
       .share-sub-link,
       .copy-sub-link,
       .refresh-sub-flow {

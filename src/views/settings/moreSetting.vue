@@ -37,6 +37,16 @@
           />
         </template>
       </nut-cell>
+      <nut-cell :title="$t(`moreSettingPage.isShowIcon`)" class="cell-item">
+        <template v-slot:link>
+          <nut-switch
+            class="my-switch"
+            v-model="awIsShowIcon"
+            size="mini"
+            @change="setIsShowIcon"
+          />
+        </template>
+      </nut-cell>
       <nut-cell :title="$t(`moreSettingPage.isIC`)" class="cell-item">
         <template v-slot:link>
           <nut-switch
@@ -66,6 +76,19 @@
             v-model="awSimpleReicon"
             size="mini"
             @change="setSimpleReicon"
+          />
+        </template>
+      </nut-cell>
+      <nut-cell
+        :title="$t(`moreSettingPage.isSimpleShowRemarks`)"
+        class="cell-item"
+      >
+        <template v-slot:link>
+          <nut-switch
+            class="my-switch"
+            v-model="awSimpleShowRemark"
+            size="mini"
+            @change="setSimpleShowRemark"
           />
         </template>
       </nut-cell>
@@ -231,8 +254,10 @@
   const LeftRight = ref(false);
   const awIconColor = ref(false);
   const awIsDefaultIcon = ref(false);
+  const awIsShowIcon = ref(true);
   const awEditorCommon = ref(false);
   const awSimpleReicon = ref(true);
+  const awSimpleShowRemark = ref(false);
   const awShowFloatingRefreshButton = ref(false);
   const awtabBar = ref(true);
   const awtabBar2 = ref(true);
@@ -292,6 +317,15 @@
     changeAppearanceSetting({ appearanceSetting: data });
   };
 
+  const setIsShowIcon = (isShowIcon: boolean) => {
+    // globalStore.setIsDefaultIcon(isDefaultIcon);
+    const data = {
+      ...appearanceSetting.value,
+      isShowIcon: isShowIcon
+    }
+    changeAppearanceSetting({ appearanceSetting: data });
+  };
+
   const setEditorCommon = (isEditorCommon: boolean) => {
     // globalStore.setEditorCommon(isEditorCommon);
     const data = {
@@ -306,6 +340,15 @@
     const data = {
       ...appearanceSetting.value,
       isSimpleReicon: isSimpleReicon
+    }
+    changeAppearanceSetting({ appearanceSetting: data });
+  };
+
+  const setSimpleShowRemark = (isSimpleShowRemark: boolean) => {
+    // globalStore.setSimpleReicon(isSimpleReicon);
+    const data = {
+      ...appearanceSetting.value,
+      isSimpleShowRemark: isSimpleShowRemark
     }
     changeAppearanceSetting({ appearanceSetting: data });
   };
@@ -514,8 +557,10 @@
     LeftRight.value = appearanceSetting.value.isLeftRight;
     awIconColor.value = appearanceSetting.value.isIconColor;
     awIsDefaultIcon.value = appearanceSetting.value.isDefaultIcon;
+    awIsShowIcon.value = appearanceSetting.value.isShowIcon;
     awEditorCommon.value = appearanceSetting.value.isEditorCommon;
     awSimpleReicon.value = appearanceSetting.value.isSimpleReicon;
+    awSimpleShowRemark.value = appearanceSetting.value.isSimpleShowRemark;
     awShowFloatingRefreshButton.value = appearanceSetting.value.showFloatingRefreshButton;
     awtabBar.value = appearanceSetting.value.istabBar;
     awtabBar2.value = appearanceSetting.value.istabBar2;

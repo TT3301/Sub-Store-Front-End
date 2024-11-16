@@ -57,6 +57,9 @@
         <div class="sub-item-title-wrapper">
           <h3 v-if="!appearanceSetting.isSimpleMode" class="sub-item-title">
             {{ displayName || name }}
+            <span v-if="appOpenBtnVisible" class="app-url" @click="openAppUrl" :title="typeof flow === 'object' ? flow.appUrl : ''">
+              <font-awesome-icon icon="fa-solid fa-square-arrow-up-right" />
+            </span>
             <span v-for="i in tag" :key="i" class="tag">
               <nut-tag>{{ i }}</nut-tag>
             </span>
@@ -67,6 +70,9 @@
             style="color: var(--primary-text-color); font-size: 16px"
           >
             {{ displayName || name }}
+            <span v-if="appOpenBtnVisible" class="app-url" @click="openAppUrl" :title="typeof flow === 'object' ? flow.appUrl : ''">
+              <font-awesome-icon icon="fa-solid fa-square-arrow-up-right" />
+            </span>
             <span v-for="i in tag" :key="i" class="tag">
               <nut-tag>{{ i }}</nut-tag>
             </span>
@@ -138,10 +144,10 @@
               </span>
             </template>
             <template v-else-if="typeof flow === 'object'">
-              <span>
+              <span :title="flow.planName" @click.stop="openAppUrl">
                 {{ flow.firstLine }}
               </span>
-              <span>{{ flow.secondLine }}</span>
+              <span :title="flow.planName" @click.stop="openAppUrl">{{ flow.secondLine }}</span>
             </template>
           </p>
           <p v-else-if="type === 'collection'" class="sub-item-detail">
@@ -160,10 +166,10 @@
               </span>
             </template>
             <template v-else-if="typeof flow === 'object'">
-              <span v-if="flow.secondLine" style="font-weight: normal">
+              <span v-if="flow.secondLine" style="font-weight: normal" :title="flow.planName" @click.stop="openAppUrl">
                 {{ `${flow.firstLine} | ${flow.secondLine}` }}
               </span>
-              <span v-else style="font-weight: normal">
+              <span v-else style="font-weight: normal" :title="flow.planName" @click.stop="openAppUrl">
                 {{ flow.firstLine }}
               </span>
             </template>
@@ -348,6 +354,7 @@ const remarkText = computed(() => {
   }
 });
 const { flows } = storeToRefs(subsStore);
+
 const icon = computed(() => {
   return appearanceSetting.value.isDefaultIcon ? logoIcon : logoRedIcon;
 });
@@ -408,6 +415,8 @@ const flow = computed(() => {
       };
     } else if (target.status === "success") {
       let {
+        planName,
+        appUrl,
         remainingDays,
         expires,
         total,
@@ -436,6 +445,8 @@ const flow = computed(() => {
             : expiresInfo;
         }
         return {
+          planName,
+          appUrl,
           firstLine: `${getString(
             target.showRemaining
               ? total - upload - download
@@ -466,6 +477,8 @@ const flow = computed(() => {
             : expiresInfo;
         }
         return {
+          planName,
+          appUrl,
           firstLine: `${t(
             target.showRemaining
               ? "subPage.subItem.showRemainingFlow"
@@ -513,6 +526,17 @@ const closeCompare = () => {
   });
 
   router.back();
+};
+
+const appOpenBtnVisible = computed(() => {
+  return props.type === 'sub' && typeof flow.value === 'object' && flow.value?.appUrl;
+});
+
+const openAppUrl = () => {
+  console.log('flow', flow.value);
+  if (typeof flow.value === 'object' && flow.value?.appUrl) {
+    window.open(flow.value.appUrl);
+  }
 };
 
 const compareSub = async () => {
@@ -706,7 +730,16 @@ const onClickRefresh = async () => {
     cover: true,
     id: "refresh",
   });
-  await subsStore.fetchFlows(ref([props.sub]).value);
+  try {
+    await subsApi.downloadOne(name, { noCache: true });
+  } catch (e) {
+    console.error(e)
+  }
+  try {
+    await subsStore.fetchFlows(ref([props.sub]).value);
+  } catch (e) {
+    console.error(e)
+  }
   Toast.hide("refresh");
   showNotify({ title: t("globalNotify.refresh.succeed") });
 };
@@ -764,8 +797,12 @@ const onClickRefresh = async () => {
         overflow: hidden;
         font-size: 16px;
         color: var(--primary-text-color);
+        vertical-align: middle;
       }
-
+      .app-url {
+        font-size: 14px !important;
+        margin: 0 2px;
+      }
       .tag {
         margin: 0 2px;
       }

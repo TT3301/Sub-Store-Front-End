@@ -13,8 +13,8 @@ export default {
   },
   globalNotify: {
     refresh: {
-      succeed: "Refresh Successful!\nEnjoy the feeling",
-      flowFailed: "Refresh flow of {name} failed!",
+      succeed: "Refresh Completed",
+      flowFailed: "Refresh of {name} failed!",
       failed: "Refresh Failed\n",
       loading: "Refreshing Data...",
     },
@@ -868,6 +868,7 @@ export default {
     isSimpleReicon: "Show items refresh button",
     isSimpleShowRemarks: "Simple Mode Show items remarks",
     showFloatingRefreshButton: "Show floating refresh button",
+    showFloatingAddButton: "Show floating add button",
     tabBar: 'Hide "Sync" Page',
     tabBar2: 'Hide "File" Page',
     auto2: "MoreSetting Key",

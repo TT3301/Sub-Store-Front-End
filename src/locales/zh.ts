@@ -563,7 +563,7 @@ export default {
     storage: {
       gist: {
         label: 'Gist 同步',
-        info: '可在同步配置中将文件/订阅同步到 Gist'
+        info: '在同步配置中同步文件/订阅至 Gist'
       },
       manual: {
         label: '手动管理',
@@ -853,6 +853,7 @@ export default {
     isIC: '自定义图标使用原始颜色',
     isDefaultIcon: '恢复默认图标',
     isShowIcon: '展示图标',
+    isSubItemMenuFold: '收纳订阅页菜单功能',
     isEditorCommon: '展示编辑页常用配置',
     isSimpleReicon: '简洁模式展示刷新按钮',
     isSimpleShowRemarks: '简洁模式列表展示备注',

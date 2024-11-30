@@ -287,6 +287,7 @@ export default {
         },
         subscriptions: {
           label: "Select included subscriptions",
+          empty: 'Please create a subscription first, then use the collection feature',
         },
         content: {
           label: "Content",
@@ -526,8 +527,8 @@ export default {
       gistToken: "Please input Gist Token",
       defaultUserAgent: "Please input Default User-Agent",
       defaultProxy: "Please input Default Proxy/Policy",
-      defaultTimeout: "Please input Default Timeout (in milliseconds)",
-      cacheThreshold: "Please input Cache Threshold (in KB)",
+      defaultTimeout: "Default Timeout (in milliseconds, default: 8000)",
+      cacheThreshold: "Cache Threshold (in KB, default: 1024)",
       noGithubUser: "Not set GitHub username",
       noGistToken: "Not set Gist Token",
       noDefaultUserAgent: "Not set default user-agent",

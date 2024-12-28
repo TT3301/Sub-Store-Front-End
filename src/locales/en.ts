@@ -312,7 +312,7 @@ export default {
         },
         subUserinfo: {
           label: "Subscription-Userinfo",
-          placeholder: "Set subscription usage info manually",
+          placeholder: "Value or URL(use response content)",
         },
         proxy: {
           label: "Proxy/Policy",
@@ -444,6 +444,7 @@ export default {
             "Hysteria",
             "Hysteria 2",
             "Juicity",
+            "mieru",
             "WireGuard",
             "SSH",
             "External Proxy Program",
